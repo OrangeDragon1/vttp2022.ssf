@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest News Articles</title>
+    <style>
+        .border {
+            border: 1px black solid;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="border">
+        <tr>
+            <td>
+                <h1>Crypto News of the Day</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <!-- body here -->
+                <table>
+                    <form action="/articles" method="post">
+                        <tr>
+                            <td><button type="submit">Save</button></td>
+                        </tr>
+                        <tr data-th-each="a:${articlesList}" class="border">
+                            <td>
+                                <!-- image here -->
+                                <img data-th-src="@{${a.imageUrl}}">
+                            </td>
+                            <td class="border">
+                                Id: <span data-th-text="${a.id}"></span>
+                                <br><br>
+                                <strong data-th-text="${a.title}"></strong>
+                                <br><br>
+                                <span data-th-text="${a.body}"></span>
+                                <br><br>
+                                Categories: <span data-th-text="${a.categories}"></span>
+                                <br>
+                                Tags: <span data-th-text="${a.tags}"></span>
+                                <br><br>
+                                Published: <span data-th-text="${a.publishedOn}"></span>
+                                <a data-th-href="@{${a.url}}">Link</a>
+                                <!-- <input type="checkbox" name="check" id="" data-th-value="${a.contents}"> Save -->
+                                <input type="checkbox" data-th-name="${a.row}" id="" data-th-value="${a.contents}"> Save
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
